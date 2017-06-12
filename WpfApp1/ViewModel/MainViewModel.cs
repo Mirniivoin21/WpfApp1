@@ -1,62 +1,30 @@
-using System;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace WpfApp1.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        public RelayCommand AddPhrase => new RelayCommand(() => Items.Add(MyText));
+
         public MainViewModel()
         {
+            Items = new ObservableCollection<string>();
         }
 
-        public ObservableCollection<string> Items { get; set; } = new ObservableCollection<string>();
-
-        public ICommand AddPhrase
-        {
-            get
-            {
-                return new ActionCommand(() =>
-                {
-                    Items.Add(MyText);
-                });
-            }
-        }
-
+        private string _myText;
         public string MyText
         {
-            get;
-            set;
+            get => _myText;
+            set => Set(MyText, ref _myText, value);
         }
 
-        //private ObservableCollection<string> _items;
-        //public ObservableCollection<string> Items
-        //{
-        //    get => _items;
-        //    set { _items = value; RaisePropertyChanged(()=>Items); }
-        //}
-    }
-
-    internal class ActionCommand : ICommand
-    {
-        private readonly Action action;
-
-        public ActionCommand(Action action)
+        private ObservableCollection<string> _items;
+        public ObservableCollection<string> Items
         {
-            this.action = action;
-        }
-
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
-        {
-            action();
+            get => _items;
+            set => Set(() => Items, ref _items, value);
         }
     }
 }

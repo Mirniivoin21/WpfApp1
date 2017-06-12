@@ -11,9 +11,15 @@
         TitleCharacterCasing="Normal"
         Title="Phrase Generator" Height="450" Width="725"
         DataContext="{Binding Source={StaticResource Locator}, Path=MainView}">
-    <Grid
-        HorizontalAlignment="Stretch" 
-        VerticalAlignment="Stretch">
+    <controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <Style x:Key="CommandButtons" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
+        </ResourceDictionary>
+    </controls:MetroWindow.Resources>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <StackPanel
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
@@ -21,49 +27,32 @@
             Margin="10 10 0 0">
             <StackPanel>
                 <TextBox x:Name="MyTextBox"
-                materialDesign:HintAssist.Hint="Phrase"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                HorizontalContentAlignment="Center"
-                Width="200"
-                FontSize="18"
-                Text="{Binding MyText, Mode=TwoWay}">
+                    materialDesign:HintAssist.Hint="Phrase"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    HorizontalContentAlignment="Center"
+                    Width="200"
+                    FontSize="18"
+                    Text="{Binding MyText, Mode=TwoWay}">
                 </TextBox>
                 <ListBox Margin="0,10,0,0" ItemsSource="{Binding Items}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock FontSize="18"
-                                   Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                   Text="{Binding}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock FontSize="18" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
-        <StackPanel>
-            <Button 
-                Margin="10 15 0 0"
-                FontSize="14"
-                Content="Add"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                Command="{Binding AddPhrase}"/>
-                <Button 
-                Margin="10 10 0 0"
-                FontSize="14"
-                Content="Remove"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                Command="{Binding Remove}"/>
-            <Button 
-                Margin="10 10 0 0"
-                FontSize="14"
-                Content="Clear"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                Command="{Binding Clear}"/>
-            <Button
-                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                Command="{Binding AddList}"
-                Margin="10"
-                Visibility="Collapsed">
-                <materialDesign:PackIcon Kind="BookPlus" Height="24" Width="24"/>
-            </Button>
+            <StackPanel>
+                <Button Content="Add" Style="{StaticResource CommandButtons}" Command="{Binding AddPhrase}" />
+                <Button Content="Remove" Style="{StaticResource CommandButtons}" Command="{Binding Remove}" />
+                <Button Content="Clear" Style="{StaticResource CommandButtons}" Command="{Binding Clear}" />
+                <Button
+                    Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                    Command="{Binding AddList}"
+                    Margin="10"
+                    Visibility="Collapsed">
+                    <materialDesign:PackIcon Kind="BookPlus" Height="24" Width="24"/>
+                </Button>
             </StackPanel>
             <StackPanel>
                 <Button 
