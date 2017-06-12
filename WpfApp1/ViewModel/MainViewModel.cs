@@ -17,7 +17,7 @@ namespace WpfApp1.ViewModel
         public string MyText
         {
             get => _myText;
-            //здесь исключение при нажатии кнопки add
+            //Super comment
             set => Set(MyText, ref _myText, value);
         }
 
