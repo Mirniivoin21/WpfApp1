@@ -18,7 +18,7 @@ namespace WpfApp1.ViewModel
         {
             get => _myText;
             //Super comment
-            set => Set(MyText, ref _myText, value);
+            set => Set(() => MyText, ref _myText, value);
         }
 
         private ObservableCollection<string> _items;
