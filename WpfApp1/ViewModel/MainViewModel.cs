@@ -22,24 +22,34 @@ namespace WpfApp1.ViewModel
         private void AddPhraseCommand()
         {
             if (!string.IsNullOrEmpty(MyText))
+            {
                 Items.Add(MyText);
+                MyText = null;
+            }
             else
                 MessageBox.Show("Please input correct value", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void GenerateCommand()
         {
-            Random glength = new Random();
-            Random Rnd = new Random();
-            string gtext = null;
-            for (int i = 0; i <= glength.Next(0, Items.Count); i++)
+            if (Items.Count != 0)
             {
-                if (i == 0)
-                    gtext = Items[Rnd.Next(0, Items.Count)];
-                else
-                    gtext += ' ' + Items[Rnd.Next(0, Items.Count)];
+                Random glength = new Random();
+                Random Rnd = new Random();
+                string gtext = null;
+                for (int i = 0; i <= glength.Next(0, Items.Count); i++)
+                {
+                    if (i == 0)
+                        gtext = Items[Rnd.Next(0, Items.Count)];
+                    else
+                        gtext += ' ' + Items[Rnd.Next(0, Items.Count)];
+                }
+                GPhrase = gtext;
             }
-            GPhrase = gtext;
+            else
+            {
+                MessageBox.Show("Please input values in list", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private string _gprase;
