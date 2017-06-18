@@ -10,6 +10,8 @@ namespace WpfApp1.ViewModel
     {
         public RelayCommand AddPhrase => new RelayCommand(() => AddPhraseCommand());
 
+        public RelayCommand Remove => new RelayCommand(() => Items.Remove(SelectItem));
+
         public RelayCommand Clear => new RelayCommand(() => Items.Clear());
 
         public RelayCommand Generate => new RelayCommand(() => GenerateCommand());
@@ -72,5 +74,7 @@ namespace WpfApp1.ViewModel
             get => _items;
             set => Set(() => Items, ref _items, value);
         }
+
+        public string SelectItem { get; set; }
     }
 }

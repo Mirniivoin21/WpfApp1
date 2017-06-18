@@ -20,6 +20,14 @@
         </ResourceDictionary>
     </controls:MetroWindow.Resources>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Button
+            Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+            Command="{Binding AddList}"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="10">
+            <materialDesign:PackIcon Kind="BookPlus" Height="24" Width="24"/>
+        </Button>
         <StackPanel
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
@@ -34,7 +42,7 @@
                     FontSize="18"
                     Text="{Binding MyText, Mode=TwoWay}">
                 </TextBox>
-                <ListBox Margin="0,10,0,0" ItemsSource="{Binding Items}">
+                <ListBox Margin="0,10,0,0" SelectedItem="{Binding SelectItem}" SelectionMode="Single" ItemsSource="{Binding Items}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock FontSize="18" Style="{StaticResource MaterialDesignBody1TextBlock}" Text="{Binding}" />
@@ -46,13 +54,6 @@
                 <Button Content="Add" Style="{StaticResource CommandButtons}" Command="{Binding AddPhrase}" />
                 <Button Content="Remove" Style="{StaticResource CommandButtons}" Command="{Binding Remove}" />
                 <Button Content="Clear" Style="{StaticResource CommandButtons}" Command="{Binding Clear}" />
-                <Button
-                    Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                    Command="{Binding AddList}"
-                    Margin="10"
-                    Visibility="Collapsed">
-                    <materialDesign:PackIcon Kind="BookPlus" Height="24" Width="24"/>
-                </Button>
             </StackPanel>
             <StackPanel>
                 <Button 
