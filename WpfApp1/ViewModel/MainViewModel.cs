@@ -16,6 +16,8 @@ namespace WpfApp1.ViewModel
 
         public RelayCommand Generate => new RelayCommand(() => GenerateCommand());
 
+        public RelayCommand ShowInfoCommand => new RelayCommand(() => ShowInfo = true);
+
         public MainViewModel()
         {
             Items = new ObservableCollection<string>();
@@ -76,5 +78,12 @@ namespace WpfApp1.ViewModel
         }
 
         public string SelectItem { get; set; }
+
+        private bool _showInfo;
+        public bool ShowInfo
+        {
+            get { return _showInfo; }
+            set { _showInfo = value; RaisePropertyChanged(() => ShowInfo); }
+        }
     }
 }

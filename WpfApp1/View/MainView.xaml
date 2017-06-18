@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         GlowBrush="{DynamicResource AccentBaseColorBrush}"
@@ -19,6 +20,42 @@
             </Style>
         </ResourceDictionary>
     </controls:MetroWindow.Resources>
+    <controls:MetroWindow.LeftWindowCommands>
+        <controls:WindowCommands>
+            <Button Command="{Binding ShowInfoCommand}">
+                <Button.Content>
+                    <iconPacks:PackIconEntypo
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Kind="Info"/>
+                </Button.Content>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.LeftWindowCommands>
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout
+                Header="Information"
+                Foreground="Aquamarine"
+                FontFamily="Bradley Hand ITC"
+                FontStyle="Italic"
+                Width="250"
+                Position="Left"
+                Theme="Dark"
+                IsModal="True"
+                IsOpen="{Binding ShowInfo}">
+                <TextBlock Margin="10"
+                           Style="{StaticResource MaterialDesignBody1TextBlock}"
+                           FontSize="24"
+                           TextWrapping="Wrap"
+                           Foreground="MediumSpringGreen"
+                           FontFamily="Bradley Hand ITC"
+                           FontStyle="Italic">
+                    Какая то полезная информация
+                </TextBlock>
+            </controls:Flyout>
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Button
             Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
