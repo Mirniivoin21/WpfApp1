@@ -12,14 +12,16 @@ namespace WpfApp1.View
         {
             // create a runtime accent resource dictionary
 
-            var resourceDictionary = new ResourceDictionary();
+            var resourceDictionary = new ResourceDictionary
+            {
+                {"HighlightColor", color},
+                {"AccentBaseColor", color},
+                {"AccentColor", Color.FromArgb(204, color.R, color.G, color.B)},
+                {"AccentColor2", Color.FromArgb(153, color.R, color.G, color.B)},
+                {"AccentColor3", Color.FromArgb(102, color.R, color.G, color.B)},
+                {"AccentColor4", Color.FromArgb(51, color.R, color.G, color.B)}
+            };
 
-            resourceDictionary.Add("HighlightColor", color);
-            resourceDictionary.Add("AccentBaseColor", color);
-            resourceDictionary.Add("AccentColor", Color.FromArgb((byte)(204), color.R, color.G, color.B));
-            resourceDictionary.Add("AccentColor2", Color.FromArgb((byte)(153), color.R, color.G, color.B));
-            resourceDictionary.Add("AccentColor3", Color.FromArgb((byte)(102), color.R, color.G, color.B));
-            resourceDictionary.Add("AccentColor4", Color.FromArgb((byte)(51), color.R, color.G, color.B));
 
             resourceDictionary.Add("HighlightBrush", GetSolidColorBrush((Color)resourceDictionary["HighlightColor"]));
             resourceDictionary.Add("AccentBaseColorBrush", GetSolidColorBrush((Color)resourceDictionary["AccentBaseColor"]));
@@ -58,7 +60,7 @@ namespace WpfApp1.View
 
             // applying theme to MahApps
 
-            var resDictName = string.Format("ApplicationAccent_{0}.xaml", color.ToString().Replace("#", string.Empty));
+            var resDictName = $"ApplicationAccent_{color.ToString().Replace("#", string.Empty)}.xaml";
             var fileName = Path.Combine(Path.GetTempPath(), resDictName);
             using (var writer = System.Xml.XmlWriter.Create(fileName, new System.Xml.XmlWriterSettings { Indent = true }))
             {
@@ -74,24 +76,16 @@ namespace WpfApp1.View
             if (changeImmediately)
             {
                 var application = Application.Current;
-                //var applicationTheme = ThemeManager.AppThemes.First(x => string.Equals(x.Name, "BaseLight"));
-                // detect current application theme
                 Tuple<AppTheme, Accent> applicationTheme = ThemeManager.DetectAppStyle(application);
                 ThemeManager.ChangeAppStyle(application, newAccent, applicationTheme.Item1);
             }
         }
 
-        /// <summary>
-        /// Determining Ideal Text Color Based on Specified Background Color
-        /// http://www.codeproject.com/KB/GDI-plus/IdealTextColor.aspx
-        /// </summary>
-        /// <param name = "color">The bg.</param>
-        /// <returns></returns>
         private static Color IdealTextColor(Color color)
         {
             const int nThreshold = 105;
-            var bgDelta = System.Convert.ToInt32((color.R * 0.299) + (color.G * 0.587) + (color.B * 0.114));
-            var foreColor = (255 - bgDelta < nThreshold) ? Colors.Black : Colors.White;
+            var bgDelta = Convert.ToInt32(color.R * 0.299 + color.G * 0.587 + color.B * 0.114);
+            var foreColor = 255 - bgDelta < nThreshold ? Colors.Black : Colors.White;
             return foreColor;
         }
 
