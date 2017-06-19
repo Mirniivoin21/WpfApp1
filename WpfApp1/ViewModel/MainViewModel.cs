@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace WpfApp1.ViewModel
 {
@@ -31,7 +33,7 @@ namespace WpfApp1.ViewModel
                 MyText = null;
             }
             else
-                MessageBox.Show("Please input correct value", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ((MetroWindow) Application.Current.MainWindow).ShowMessageAsync("Oops Error", "Please input value");
         }
 
         private void GenerateCommand()
@@ -52,7 +54,7 @@ namespace WpfApp1.ViewModel
             }
             else
             {
-                MessageBox.Show("Please input values in list", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync("Oops Error", "Please input values in list");
             }
         }
 

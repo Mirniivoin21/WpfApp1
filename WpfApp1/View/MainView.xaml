@@ -51,7 +51,7 @@
                            Foreground="MediumSpringGreen"
                            FontFamily="Bradley Hand ITC"
                            FontStyle="Italic">
-                    Какая то полезная информация
+                    Kakayato Informatsiya
                 </TextBlock>
             </controls:Flyout>
         </controls:FlyoutsControl>
