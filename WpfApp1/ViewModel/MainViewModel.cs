@@ -12,9 +12,21 @@ namespace WpfApp1.ViewModel
     {
         public RelayCommand AddPhrase => new RelayCommand(() => AddPhraseCommand());
 
-        public RelayCommand Remove => new RelayCommand(() => Items.Remove(SelectItem));
+        public RelayCommand Remove => new RelayCommand(() =>
+        {
+            if(!string.IsNullOrEmpty(SelectItem))
+            Items.Remove(SelectItem);
+            else
+            ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync("Oops Error", "Please select item");
+        });
 
-        public RelayCommand Clear => new RelayCommand(() => Items.Clear());
+        public RelayCommand Clear => new RelayCommand(() =>
+        {
+            if(Items.Count!=0)
+            Items.Clear();
+            else
+            ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync("Oops Error", "List no have values");
+        });
 
         public RelayCommand Generate => new RelayCommand(() => GenerateCommand());
 
