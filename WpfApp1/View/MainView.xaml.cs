@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using MahApps.Metro.Controls;
-using MahAppsMetroThemesSample;
 
 namespace WpfApp1.View
 {

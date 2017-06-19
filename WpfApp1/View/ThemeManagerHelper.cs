@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 using MahApps.Metro;
 
-namespace MahAppsMetroThemesSample
+namespace WpfApp1.View
 {
     public static class ThemeManagerHelper
     {
