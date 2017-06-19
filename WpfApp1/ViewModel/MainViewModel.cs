@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
@@ -10,6 +11,8 @@ namespace WpfApp1.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        private readonly IDialogService _dialogService;
+
         public RelayCommand AddPhrase => new RelayCommand(AddPhraseCommand);
 
         public RelayCommand Remove => new RelayCommand(RemoveCommand);
@@ -20,8 +23,9 @@ namespace WpfApp1.ViewModel
 
         public RelayCommand ShowInfoCommand => new RelayCommand(() => ShowInfo = true);
 
-        public MainViewModel()
+        public MainViewModel(IDialogService dialogService)
         {
+            _dialogService = dialogService;
             Items = new ObservableCollection<string>();
         }
 
@@ -33,7 +37,9 @@ namespace WpfApp1.ViewModel
                 MyText = String.Empty;
             }
             else
-                ((MetroWindow) Application.Current.MainWindow).ShowMessageAsync("Oops Error", "Please input value");
+            {
+                _dialogService.ShowMessage("Please input any value!", "Incorrect value!");
+            }
         }
 
         private void RemoveCommand()
@@ -41,7 +47,7 @@ namespace WpfApp1.ViewModel
             if (!string.IsNullOrEmpty(SelectItem))
                 Items.Remove(SelectItem);
             else
-                ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync("Oops Error", "Please select item");
+                _dialogService.ShowMessage("Please select any item!", "Nothing to do!");
         }
 
         private void GenerateCommand()
@@ -62,7 +68,7 @@ namespace WpfApp1.ViewModel
             }
             else
             {
-                ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync("Oops Error", "Please input values in list");
+                _dialogService.ShowMessage("List cannot be empty! Add some data.", "Nothing to do!");
             }
         }
 

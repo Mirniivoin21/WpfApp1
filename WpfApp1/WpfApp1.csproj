@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\DialogService.cs" />
     <Compile Include="View\ThemeManagerHelper.cs" />
     <Page Include="View\AccentStyleWindow.xaml">
       <SubType>Designer</SubType>
