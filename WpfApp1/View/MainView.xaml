@@ -50,18 +50,20 @@
                 Theme="Dark"
                 IsModal="True"
                 IsOpen="{Binding ShowInfo}">
-                <TextBlock Margin="10"
-                           Style="{StaticResource MaterialDesignBody1TextBlock}"
-                           FontSize="24"
-                           TextWrapping="Wrap"
-                           Foreground="{DynamicResource AccentColorBrush}"
-                           FontFamily="Bradley Hand ITC"
-                           FontStyle="Italic">
-                    Exorcizamus te, omnis immundus spiritus omnis satanica potestas, omnis incursio infernalis adversarii, omnis legio, omnis congregatio et secta diabolica.
-                    Ergo draco maledicte et omnis legio diabolica adjuramus te. cessa decipere humanas creaturas, eisque aeternae Perditionis venenum propinare.
-                    Vade, Satana, inventor et magister omnis fallaciae, hostis humanae salutis. Humiliare sub potenti manu dei, contremisce et effuge, invocato a nobis sancto et terribili nomine, quem inferi tremunt. Ab insidiis diaboli, libera nos, Domine.
-                    Ut Ecclesiam tuam secura tibi facias libertate servire te rogamus, audi nos.
+                <ScrollViewer>
+                    <TextBlock Margin="10"
+                               Style="{StaticResource MaterialDesignBody1TextBlock}"
+                               FontSize="24"
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource AccentColorBrush}"
+                               FontFamily="Bradley Hand ITC"
+                               FontStyle="Italic">
+                        Exorcizamus te, omnis immundus spiritus omnis satanica potestas, omnis incursio infernalis adversarii, omnis legio, omnis congregatio et secta diabolica.
+                        Ergo draco maledicte et omnis legio diabolica adjuramus te. cessa decipere humanas creaturas, eisque aeternae Perditionis venenum propinare.
+                        Vade, Satana, inventor et magister omnis fallaciae, hostis humanae salutis. Humiliare sub potenti manu dei, contremisce et effuge, invocato a nobis sancto et terribili nomine, quem inferi tremunt. Ab insidiis diaboli, libera nos, Domine.
+                        Ut Ecclesiam tuam secura tibi facias libertate servire te rogamus, audi nos.
                 </TextBlock>
+                </ScrollViewer>
             </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
