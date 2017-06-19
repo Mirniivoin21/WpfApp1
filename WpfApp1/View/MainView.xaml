@@ -30,13 +30,19 @@
                         Kind="Info"/>
                 </Button.Content>
             </Button>
+            <Button Click="ChangeAppStyleButtonClick">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconModern Width="24" Height="24" Kind="Cupcake" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="Change App Style..." />
+                </StackPanel>
+            </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>
     <controls:MetroWindow.Flyouts>
         <controls:FlyoutsControl>
             <controls:Flyout
                 Header="Information"
-                Foreground="Aquamarine"
+                Foreground="{DynamicResource AccentColorBrush}"
                 FontFamily="Bradley Hand ITC"
                 FontStyle="Italic"
                 Width="250"
@@ -48,7 +54,7 @@
                            Style="{StaticResource MaterialDesignBody1TextBlock}"
                            FontSize="24"
                            TextWrapping="Wrap"
-                           Foreground="MediumSpringGreen"
+                           Foreground="{DynamicResource AccentColorBrush}"
                            FontFamily="Bradley Hand ITC"
                            FontStyle="Italic">
                     Kakayato Informatsiya
