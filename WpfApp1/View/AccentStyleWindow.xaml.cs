@@ -46,6 +46,7 @@ namespace WpfApp1.View
         {
             var theme = ThemeManager.DetectAppStyle(Application.Current);
             ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetAppTheme("Base" + ((Button)sender).Content));
+            ThemeManager.ChangeAppStyle(this, theme.Item2, ThemeManager.GetAppTheme("Base" + ((Button)sender).Content));
         }
 
         private void ColorsSelectorOnSelectionChanged(object sender, SelectionChangedEventArgs e)
