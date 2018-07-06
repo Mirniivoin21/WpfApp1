@@ -24,6 +24,8 @@ namespace WpfApp1.View
             accentThemeTestWindow.Owner = this;
             accentThemeTestWindow.Closed += (o, args) => accentThemeTestWindow = null;
             accentThemeTestWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            accentThemeTestWindow.ShowMinButton = false;
+            accentThemeTestWindow.ShowMaxRestoreButton = false;
             accentThemeTestWindow.Show();
         }
     }

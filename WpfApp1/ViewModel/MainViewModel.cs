@@ -17,7 +17,7 @@ namespace WpfApp1.ViewModel
 
         public RelayCommand Remove => new RelayCommand(RemoveCommand);
 
-        public RelayCommand Clear => new RelayCommand(() => Items.Clear());
+        public RelayCommand Clear => new RelayCommand(ClearCommand);
 
         public RelayCommand Generate => new RelayCommand(GenerateCommand);
 
@@ -27,6 +27,14 @@ namespace WpfApp1.ViewModel
         {
             _dialogService = dialogService;
             Items = new ObservableCollection<string>();
+        }
+
+        private void ClearCommand()
+        {
+            if(Items.Count==0)
+            _dialogService.ShowMessage("List cannot be empty! Add some data.", "Nothing to do!");
+            else
+            Items.Clear();
         }
 
         private void AddPhraseCommand()

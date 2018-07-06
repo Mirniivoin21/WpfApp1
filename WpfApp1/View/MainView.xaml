@@ -77,8 +77,8 @@
             <materialDesign:PackIcon Kind="BookPlus" Height="24" Width="24"/>
         </Button>
         <StackPanel
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
             Orientation="Horizontal"
             Margin="10 10 0 0">
             <StackPanel>
